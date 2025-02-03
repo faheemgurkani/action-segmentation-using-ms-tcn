@@ -1,0 +1,19 @@
+# Ignore log files
+*.log
+
+# Ignore temporary files
+*.tmp
+
+# Ignore all Python cache files and directories
+__pycache__/
+*.pyc
+
+# Ignore dataset and large files
+data/
+models/
+
+# Ignore IDE configurations
+.vscode/
+.idea/
+
+arch/backbone/myenv

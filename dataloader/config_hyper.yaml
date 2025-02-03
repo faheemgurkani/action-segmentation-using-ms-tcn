@@ -1,0 +1,36 @@
+# lr: 5.0e-4 # for batch size 16
+lr: 8.66e-4 # for batch size 64
+batch_size: 64
+num_epochs: 200
+optimizer: AdamW
+num_workers: 0
+train_shuffle: True
+test_shuffle: False
+
+##output res
+output_res: 128
+
+
+####Loss function
+num_stacks: 1
+mse_loss: False
+dense_hp: False
+reg_loss: 'l1'
+
+eval_oracle_hmhp: False
+eval_oracle_hm: False
+eval_oracle_kps: False
+eval_oracle_hp_offset: False
+loss_stats: ['loss', 'hm_loss', 'hp_loss', 'hm_hp_loss', 
+                    'hp_offset_loss', 'wh_loss', 'off_loss']
+
+####weighting 
+hp_weight: 1
+wh_weight: 0.1
+reg_offset: True
+off_weight: 1
+reg_hp_offset: True
+off_weight: 1
+hm_hp: True 
+hm_hp_weight: 1
+hm_weight: 1

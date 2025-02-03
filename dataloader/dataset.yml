@@ -1,0 +1,111 @@
+dataset_dir: ./data
+#####albumnetation transformations
+albumentations: 
+  apply: True
+  vis: True
+  resize_height: 224
+  resize_width: 224
+  HorizontalFlip: 0.5 #probability 0 to 1
+  VerticalFlip: 0.5
+  Affine: 0
+down_ratio: 4 #note: must be 4 for img size = 512
+num_classes: 1
+max_objs: 100
+mean: [0.40789654, 0.44719302, 0.47026115]
+std: [0.28863828, 0.27408164, 0.27809835]
+###map your actions here
+action_mapping:
+  take: 0  
+  open: 1  
+  pour: 2  
+  close: 3  
+  shake: 4  
+  scoop: 5  
+  stir: 6 
+  put: 7 
+  fold: 8  
+  spread: 9 
+  background: 10
+
+kp_mapping: [
+    "WRIST",
+    "THUMB_CMC",
+    "THUMB_MCP",
+    "THUMB_IP",
+    "THUMB_TIP",
+    "INDEX_FINGER_MCP",
+    "INDEX_FINGER_PIP",
+    "INDEX_FINGER_DIP",
+    "INDEX_FINGER_TIP",
+    "MIDDLE_FINGER_MCP",
+    "MIDDLE_FINGER_PIP",
+    "MIDDLE_FINGER_DIP",
+    "MIDDLE_FINGER_TIP",
+    "RING_FINGER_MCP",
+    "RING_FINGER_PIP",
+    "RING_FINGER_DIP",
+    "RING_FINGER_TIP",
+    "PINKY_MCP",
+    "PINKY_PIP",
+    "PINKY_DIP",
+    "PINKY_TIP"
+]
+
+eig_val:  [0.2141788, 0.01817699, 0.00341571]
+eig_vect: [[-0.58752847, -0.69563484, 0.41340352],
+          [-0.5832747, 0.00994535, -0.81221408],
+          [-0.56089297, 0.71832671, 0.41158938]]
+
+acc_idxs: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+edges:  [[0, 1], [0, 5], [0, 17], [1, 2], 
+        [2, 3], [3, 4], [5, 6], [5, 9], 
+        [6, 7], [7, 8], [9, 10], [9, 13], [10, 11], 
+        [11, 12], [13, 14],[13, 17], [14, 15], 
+        [15, 16], [17, 18], [18, 19], [19, 20]]
+
+colors_hp:
+  - [255, 0, 255]
+  - [255, 0, 0]
+  - [0, 0, 255]
+  - [255, 0, 0]
+  - [0, 0, 255]
+  - [255, 0, 0]
+  - [0, 0, 255]
+  - [255, 0, 0]
+  - [0, 0, 255]
+  - [255, 0, 0]
+  - [0, 0, 255]
+  - [255, 0, 0]
+  - [0, 0, 255]
+  - [255, 0, 0]
+  - [0, 0, 255]
+  - [255, 0, 0]
+  - [0, 0, 255]
+  - [255, 0, 0]
+  - [0, 0, 255]
+  - [255, 0, 0]
+  - [0, 0, 255]
+
+ec:
+ - [255, 0, 0] 
+ - [0, 0, 255]
+ - [255, 0, 0] 
+ - [0, 0, 255] 
+ - [255, 0, 0]
+ - [0, 0, 255]
+ - [255, 0, 255]
+ - [255, 0, 0]
+ - [255, 0, 0]
+ - [0, 0, 255] 
+ - [0, 0, 255]
+ - [255, 0, 0] 
+ - [0, 0, 255]
+ - [255, 0, 255]
+ - [255, 0, 0] 
+ - [255, 0, 0] 
+ - [0, 0, 255] 
+ - [0, 0, 255]
+ - [255, 0, 0] 
+ - [255, 0, 0] 
+ - [0, 0, 255] 
+ - [0, 0, 255]
