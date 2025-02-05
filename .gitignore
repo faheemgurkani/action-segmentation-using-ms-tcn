@@ -11,6 +11,7 @@ __pycache__/
 # Ignore dataset and large files
 data/
 models/
+results/
 
 # Ignore IDE configurations
 .vscode/

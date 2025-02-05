@@ -64,7 +64,7 @@ class Trainer:
         self.model.train()
         self.model.to(device)
         optimizer = optim.Adam(self.model.parameters(), lr=learning_rate)
-        for epoch in range(num_epochs):
+        for epoch in tqdm(range(num_epochs)):
             epoch_loss = 0
             correct = 0
             total = 0
@@ -113,7 +113,11 @@ class Trainer:
                 predicted = predicted.squeeze()
                 recognition = []
                 for i in range(len(predicted)):
-                    recognition = np.concatenate((recognition, [actions_dict.keys()[actions_dict.values().index(predicted[i].item())]]*sample_rate))
+                    # recognition = np.concatenate((recognition, [list(actions_dict.keys()[actions_dict.values().index(predicted[i].item())])]*sample_rate))
+                    recognition = np.concatenate(
+                        (recognition, [list(actions_dict.keys())[list(actions_dict.values()).index(predicted[i].item())]] * sample_rate)
+                    )
+
                 f_name = vid.split('/')[-1].split('.')[0]
                 f_ptr = open(results_dir + "/" + f_name, "w")
                 f_ptr.write("### Frame level recognition: ###\n")

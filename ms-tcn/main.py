@@ -22,7 +22,7 @@ def main():
     torch.backends.cudnn.deterministic = True
 
     # Configuration Variables
-    action = "train"
+    action = "predict"
     dataset = "gtea"
     split = "1"
     split_ratio = 0.8
@@ -45,14 +45,14 @@ def main():
 
     vid_list_file = f"./data/{dataset}/splits/train.split{split}.bundle"
     vid_list_file_tst = f"./data/{dataset}/splits/test.split{split}.bundle"
-    features_path = f"./data/{dataset}/extracted_frame_features/"
+    features_path = f"./data/{dataset}/merged_extracted_frame_features/"
     gt_path = f"./data/{dataset}/action_labels/"
     mapping_file = f"./data/{dataset}/mapping.txt"
 
     split_generation_utility(dataset, split, split_ratio, features_path)
 
-    model_dir = f"../models/{dataset}/split_{split}"
-    results_dir = f"../results/{dataset}/split_{split}"
+    model_dir = f"./models/{dataset}/split_{split}"
+    results_dir = f"./results/{dataset}/split_{split}"
 
     os.makedirs(model_dir, exist_ok=True)
     os.makedirs(results_dir, exist_ok=True)
@@ -69,10 +69,11 @@ def main():
     if action == "train":
         batch_gen = BatchGenerator(num_classes, actions_dict, gt_path, features_path, sample_rate)
         batch_gen.read_data(vid_list_file)
-        # trainer.train(model_dir, batch_gen, num_epochs=num_epochs, batch_size=bz, learning_rate=lr, device=device)
+        
+        trainer.train(model_dir, batch_gen, num_epochs=num_epochs, batch_size=bz, learning_rate=lr, device=device)
 
-    # if action == "predict":
-    #     trainer.predict(model_dir, results_dir, features_path, vid_list_file_tst, num_epochs, actions_dict, device, sample_rate)
+    if action == "predict":
+        trainer.predict(model_dir, results_dir, features_path, vid_list_file_tst, num_epochs, actions_dict, device, sample_rate)
 
 
 
