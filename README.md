@@ -6,4 +6,4 @@
 --- 
 
 ### To Do:
-- Implement multi-modality.
+- Implement multi-modality and test.
