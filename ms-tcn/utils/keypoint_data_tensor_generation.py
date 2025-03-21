@@ -151,21 +151,22 @@ def process_csv_file(csv_path, output_dir):
 
 
 if __name__ == "__main__":
-    # input_dir = "./data/gtea/extracted_xml_data"
-    # output_dir = "./data/gtea/merged_extracted_keypoint_features"
+    input_dir = "./data/gtea/extracted_xml_data"
+    output_dir = "./data/gtea/merged_extracted_keypoint_features"
     
-    # os.makedirs(output_dir, exist_ok=True)
+    os.makedirs(output_dir, exist_ok=True)
     
-    # # Processing each CSV file in the input directory.
-    # for file in tqdm(os.listdir(input_dir)):
+    # Processing each CSV file in the input directory.
+    for file in tqdm(os.listdir(input_dir)):
         
-    #     if file.endswith('.csv'):
-    #         csv_file_path = os.path.join(input_dir, file)
+        if file.endswith('.csv'):
+            csv_file_path = os.path.join(input_dir, file)
         
-    #         process_csv_file(csv_file_path, output_dir)
-
+            process_csv_file(csv_file_path, output_dir)
 
     # For, testing
+    print()
+
     data = np.load("./data/gtea/merged_extracted_keypoint_features/S1_Cheese_C1.npy", allow_pickle=True)
 
     # Checking the type of the loaded object
